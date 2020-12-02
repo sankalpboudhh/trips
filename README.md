@@ -1,3 +1,4 @@
 # trips
 
-A personal journey
+A personal journey with photos, date and members
+
