@@ -1,0 +1,42 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Places Visited</title>
+  </head>
+  <body>
+    <h1>Bellooo</h1>
+    <div>
+      <h2>Bananannanaa</h2>
+      <style>
+      body {
+        background-image src:("%static 'pics/background.jpg' %");
+      }
+      </style>
+      <style>
+        img {
+          width: 20%;
+          height: auto;
+        }
+      </style>
+      <img src= "{% static 'pics/belloo.png' %}"  >
+      <p>Mummmy </p>
+      <p>1990</p>
+    </div>
+
+      {% for place in places %}
+      <div>
+        <h2>{{place.name}}</h2>
+        <img src= "{{ place.img.url }}" width="100" height="170" >
+        <p>With : {{place.with_whom}} </p>
+        <p>Year : {{place.when}}</p>
+      </div>
+      {% endfor %}
+
+
+
+  </body>
+</html>
