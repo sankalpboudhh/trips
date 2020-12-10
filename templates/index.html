@@ -6,37 +6,57 @@
   <head>
     <meta charset="utf-8">
     <title>Places Visited</title>
+    <style>
+      /* body {
+        background-image: url("{%static 'pics/background.jpg' %}");
+      } */
+      img {
+        width: 20%;
+        height: auto;
+      }
+      td {
+        padding: 3px 5px 3px 5px;
+      }
+    </style>
   </head>
   <body>
     <h1>Bellooo</h1>
-    <div>
+      <img src= "{% static 'pics/belloo.png' %}"  >
+    <!-- <div>
       <h2>Bananannanaa</h2>
-      <style>
-      body {
-        background-image src:("%static 'pics/background.jpg' %");
-      }
-      </style>
-      <style>
-        img {
-          width: 20%;
-          height: auto;
-        }
-      </style>
       <img src= "{% static 'pics/belloo.png' %}"  >
       <p>Mummmy </p>
       <p>1990</p>
+    </div> -->
+
+    <table border="solid">
+      <thead>
+        <td>Person</td>
+        <td>Place</td>
+      </thead>
+    {% for person in persons %}
+      <tr>
+        <td>{{person.name}}</td>
+        <td>{{person.place}}</td>
+      </tr>
+    {% endfor %}
+    </table>
+
+    {% for place in places %}
+    <div>
+      <h2>{{place.name}}</h2>
+      <img src= "{{ place.img.url }}" width="100" height="170" >
+      <p>With : <a href="url">{{place.with_whom}} </a> </p>
+      <p>Year : {{place.when}}</p>
+      <p>Met these people here:
+        {% for person in persons %}
+          {% if person.place == place %}
+          {{person.name}}
+          {% endif %}
+        {% endfor %}
+      </p>
     </div>
-
-      {% for place in places %}
-      <div>
-        <h2>{{place.name}}</h2>
-        <img src= "{{ place.img.url }}" width="100" height="170" >
-        <p>With : {{place.with_whom}} </p>
-        <p>Year : {{place.when}}</p>
-      </div>
-      {% endfor %}
-
-
+    {% endfor %}
 
   </body>
 </html>
